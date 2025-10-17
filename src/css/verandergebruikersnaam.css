@@ -1,0 +1,169 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f8fa;
+}
+/* Ghost button style for cancel */
+.ghost {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    box-shadow: none;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+.ghost:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Container and header tweaks */
+.container.page {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 24px 28px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+}
+.container.page .header {
+    margin-bottom: 18px;
+}
+.container.page h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+.container.page .card-note {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Form tweaks */
+.form {
+    margin-top: 10px;
+}
+.form-row {
+    margin-bottom: 18px;
+}
+label {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    font-size: 16px;
+    background: #f7f8fa;
+    margin-bottom: 2px;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 8px;
+}
+button {
+    cursor: pointer;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+    transition: background 0.2s;
+}
+button:hover {
+    background: #1e40af;
+}
+
+.error {
+    color: #b91c1c;
+    background: #fff5f5;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(191, 18, 18, 0.08);
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+:root {
+    --accent: #2563eb;
+    --radius: 10px;
+    --muted: #6b7280
+}
+
+
+.page   {
+    max-width: 520px;
+    margin: 36px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06)
+}
+
+.page h1 {
+    margin-top: 0;
+    font-size: 20px
+}
+
+
+.form-row {
+    margin-bottom: 14px
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 14px
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    font-size: 15px
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.06)
+}
+
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+button {
+    cursor: pointer
+}
+
+
+.error {
+    color: #b91c1c;
+    background: #fff5f5;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(191, 18, 18, 0.08)
+}

@@ -1,0 +1,111 @@
+/* css/scores.css */
+.scoreboard {
+    max-width: 900px;
+    margin: 18px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.scoreboard__title {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    text-align: left;
+    color: #222;
+}
+
+.scoreboard__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    background: #fafcff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.scoreboard__table--small { width: auto; margin-top: 6px; }
+
+.scoreboard__headrow {
+    background: #2563eb;
+    color: #fff;
+}
+
+.scoreboard__th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #e5e7eb;
+    font-size: 1rem;
+}
+
+.scoreboard__row:nth-child(even) {
+    background: #f6f8fa;
+}
+
+.scoreboard__row:hover {
+    background: #e0e7ff;
+}
+
+.scoreboard__row--current {
+    background: #e6ffea !important; /* groen voor huidige gebruiker */
+    font-weight: 700;
+}
+
+.scoreboard__cell {
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    font-size: 1rem;
+}
+
+.scoreboard__cell--positie {
+    width: 72px;
+    text-align: center;
+}
+
+.scoreboard__cell--naam {
+    width: 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.scoreboard__cell--clicks {
+    width: 90px;
+    text-align: right;
+    font-weight: 600;
+}
+
+.scoreboard__subtitle {
+    margin-top: 10px;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+}
+
+.scoreboard__message {
+    margin-top: 8px;
+    background: #f2f9f2;
+    padding: 8px;
+    border-left: 4px solid #8bd28b;
+}
+
+.scoreboard__em {
+    font-weight: 800;
+}
+
+/* Top 3 highlight */
+.scoreboard__row:nth-child(1) .scoreboard__cell { background: #fff7e6; }
+.scoreboard__row:nth-child(2) .scoreboard__cell { background: #f2fbff; }
+.scoreboard__row:nth-child(3) .scoreboard__cell { background: #fff5f9; }
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+    .scoreboard {
+        padding: 2px;
+    }
+    .scoreboard__table, .scoreboard__th, .scoreboard__cell {
+        font-size: 0.95rem;
+        padding: 6px 4px;
+    }
+}

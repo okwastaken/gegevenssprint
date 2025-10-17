@@ -1,0 +1,25 @@
+# Composer
+/vendor/
+/composer.lock
+/composer.phar
+
+# IDE/Editor
+.idea/
+.vscode/
+
+# Logbestanden
+/log/
+/*.log
+
+# Omgevingsbestanden
+.env
+.env.local
+.env.*
+
+# Cache en tijdelijke bestanden
+*.tmp
+*.cache
+
+# Overige
+.DS_Store
+Thumbs.db

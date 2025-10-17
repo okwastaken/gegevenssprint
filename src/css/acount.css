@@ -1,0 +1,69 @@
+        .account-container {
+            background: #fff;
+            padding: 24px 32px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+            max-width: 500px;
+            width: 100%;
+            margin: 100px auto 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        form {
+            flex: 1 1 auto;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        form[action="veranderengebruikersnaampagina.php"] button {
+            background-color: #2563eb;
+            color: #fff;
+        }
+
+        form[action=""] button[name="clicks"] {
+            background-color: #6b7280;
+            color: #fff;
+        }
+
+        form[action=""] button[name="verwijder"] {
+            background-color: #ef4444;
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            .account-container {
+                margin: 80px 16px 0;
+                padding: 20px;
+            }
+        }

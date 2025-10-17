@@ -1,0 +1,17 @@
+.alert {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 600
+}
+
+.alert.error {
+    background: #fff5f5;
+    color: #991b1b;
+    border: 1px solid rgba(153, 27, 27, 0.08)
+}
+
+.alert.info {
+    background: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid rgba(3, 105, 161, 0.06)
+}

@@ -1,0 +1,31 @@
+.pdf-container form {
+    display: flex;
+    justify-content: center; /* knop horizontaal centreren */
+    margin-top: 12px; /* verklein gap tussen tabel en knop */
+}
+        .pdf-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pdf-container button {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background-color: #2563eb;
+            color: #fff;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
+        .pdf-container button:hover {
+            transform: translateY(-2px);
+            background-color: #1e40af;
+        }
+
+.pdf-container button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
