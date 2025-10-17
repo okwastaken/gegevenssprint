@@ -8,8 +8,11 @@
 .vscode/
 
 # Logbestanden
-/log/
-/*.log
+log/
+log/*.log
+**/log/
+**/log/*.log
+*.log
 
 # Omgevingsbestanden
 .env
