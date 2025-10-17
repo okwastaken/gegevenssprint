@@ -1,5 +1,5 @@
 <?php
-// Start session EERST
+//als sessie niet gestart is start sessie
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -10,7 +10,7 @@ if (!isset($_SESSION['gebruikersnaam'])) {
     exit();
 }
 $base = '/periode_1/gegevenssprint';
-// GEFIXED: Gebruik __DIR__ voor betrouwbare paden
+
 require_once(__DIR__ . '../php/hoofpaginabackend.php');
 require_once(__DIR__ . '../php/header.php');
 ?>

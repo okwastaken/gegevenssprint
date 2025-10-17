@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check if user is logged in
+// check of gebruiker ingelogd is
 if (!isset($_SESSION['gebruikersnaam'])) {
     header('Location: ../php/login.php');
     exit();

@@ -18,13 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clicks'])) {
     $stmt->bind_param('i', $id);
 
     if ($stmt->execute()) {
-        // Reset clicks in session
+        // Reset clicks in session 
         $_SESSION['clicks'] = 0 ?? 0;
         header('Location: ../php/account.php');
         exit;
     } else {
+        //fout bericht
         echo "Fout bij resetten van clicks: " . htmlspecialchars($stmt->error);
     }
-
+    //afsluiten
     $stmt->close();
 }

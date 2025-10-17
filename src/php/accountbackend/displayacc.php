@@ -20,6 +20,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result && $result->num_rows > 0) {
+    // toon gebruikers leeftijd en clicks
     while ($row = $result->fetch_assoc()) {
 
         echo
@@ -27,6 +28,7 @@ if ($result && $result->num_rows > 0) {
             . "  Clicks: " . htmlspecialchars($row["clicks"]) . "<br>";
     }
 } else {
+    // geen resultaten bericht
        echo '<div class="card-note">Geen resultaten voor gebruiker: ' . htmlspecialchars($naam) . '</div>';
 }
 

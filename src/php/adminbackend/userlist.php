@@ -3,7 +3,7 @@ include '../php/db.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
+//check admin
 if (!isset($_SESSION['is_admin']) === 1) {
     header('Location: ../php/login.php');
     exit();
@@ -12,7 +12,7 @@ if (!isset($_SESSION['is_admin']) === 1) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt = $conn->prepare("SELECT * FROM gebruikers");
-
+// Haal alle gebruikers op
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {

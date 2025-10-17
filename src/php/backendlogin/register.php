@@ -2,7 +2,7 @@
 include __DIR__ . '../../db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+    //htmlspecialchars om XSS te voorkomen 
     $naam = htmlspecialchars($_POST['gebruikersnaam']);
     $leeftijd = htmlspecialchars($_POST['leeftijd']);
 
@@ -11,22 +11,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt2->bind_param('s', $naam);
     $stmt2->execute();
     //voor check of er al een user met zelfde naam inzit
-    $stmt2->store_result(); 
-
+    $stmt2->store_result();
+    //voor check of er al een user met zelfde naam inzit
     if ($stmt2->num_rows > 0) {
         header('Location: ../registerform.php?error=username_taken');
         exit();
     }
-
+    //afsluiten check
     $stmt2->close();
-
+    // Voeg nieuwe gebruiker toe
     $stmt = $conn->prepare("INSERT INTO gebruikers (naam, leeftijd) VALUES (?, ?)");
     $stmt->bind_param("si", $naam, $leeftijd);
     if ($stmt->execute()) {
-    header("Location: ../login.php?registered=1");
-    exit();
+        header("Location: ../login.php?registered=1");
+        exit();
     } else {
         echo "Error: " . $stmt->error;
     }
+    // afsluiten
     $stmt->close();
 }

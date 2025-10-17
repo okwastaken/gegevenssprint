@@ -43,11 +43,12 @@ $base = 'gegevenssprint/';
     </header>
 
     <script>
-        // bevestiging afmelden
+        // bevestiging afmelden 
         document.addEventListener('DOMContentLoaded', () => {
-            const zekerLinks = document.querySelectorAll('a#weetjehetzeker');
-            zekerLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+            // voor elke link met id weetjehetzeker
+            const confirm= document.querySelectorAll('a#weetjehetzeker');
+            confirm.forEach(confirm => {
+                confirm.addEventListener('click', function(e) {
                     if (!confirm('Weet je zeker dat je deze actie wilt uitvoeren?')) {
                         e.preventDefault();
                     }

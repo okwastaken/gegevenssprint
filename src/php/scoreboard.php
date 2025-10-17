@@ -1,12 +1,14 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'header.php';
 include "./clicks/scores.php";
 if (!isset($_SESSION['gebruikersnaam'])) {
     header('Location: ../php/login.php');
     exit();
 }
-$base = '../../'; 
+$base = '../../';
 ?>
 <!DOCTYPE html>
 <html lang="nl">

@@ -26,18 +26,18 @@ if (!isset($_SESSION['clicks'])) {
 
 $welcomeMessage = "<h1 class='e'>Hallo " . htmlspecialchars($_SESSION['gebruikersnaam']) . "!<br></h1>";
 
-// Verwerk click button
+// verwerk click button
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['clickButton'])) {
         $_SESSION['clicks']++;
 
         // Update database
-        $stmt = $conn->prepare("UPDATE gebruikers SET clicks = ? WHERE naam = ?");
+        $sFtmt = $conn->prepare("UPDATE gebruikers SET clicks = ? WHERE naam = ?");
         $stmt->bind_param("is", $_SESSION['clicks'], $_SESSION['gebruikersnaam']);
         $stmt->execute();
         $stmt->close();
 
-        // Redirect om dubbele POST te voorkomen
+        // Redirect om bij reload + click te voorkomen
         header("Location: " . $_SERVER['PHP_SELF']);
         exit();
     }

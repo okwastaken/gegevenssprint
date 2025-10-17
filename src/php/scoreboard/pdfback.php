@@ -2,15 +2,16 @@
 require_once __DIR__ . '../../db.php';
 require_once __DIR__ . '/../../../vendor/autoload.php';
 use Dompdf\Dompdf;
-
+//gebruik Dompdf plugin
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
+//check of gebruiker ingelogd is
 if (!isset($_SESSION['gebruikersnaam'])) {
     header('Location: ../php/login.php');
     exit();
 }
+//voor later gebruik in de while loop om top 10 te displayen
 $positie = 1;
 $top10 = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['download_pdf'])) {
@@ -20,16 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['download_pdf'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Bouw HTML met een <style> blok dat door Dompdf verwerkt wordt.
-    // Let op: sommige moderne CSS-features (zoals variabelen & complexe filters)
-    // worden niet volledig ondersteund door Dompdf — houd het redelijk 'klassiek'.
     $html = '<!DOCTYPE html>
     <html lang="nl">
     <head>
         <meta charset="utf-8">
         <title>Leaderboard</title>
         <style>
-            /* heb het hier gedaan omdat ik niet zeker weet of de cache tegen werkt of css gewoon hierneergezetmoet worden*/
+            /* --------------------------------heb het hier gedaan omdat ik niet zeker weet of de cache tegen werkt of css gewoon hierneergezetmoet worden*/
             @page { margin: 18mm 15mm; size: A4 portrait; }
             html, body {
                 margin: 0;
@@ -132,15 +130,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['download_pdf'])) {
 
 
     while ($row = $result->fetch_assoc()) {
+    //haal de naam en clicks op
     $naam = htmlspecialchars($row['naam']);
     $clicks = htmlspecialchars($row['clicks']);
 
-    // Top 3 styling
-    $rowClass = '';
-    if ($positie == 1) $rowClass = 'top-1';
-    elseif ($positie == 2) $rowClass = 'top-2';
-    elseif ($positie == 3) $rowClass = 'top-3';
-
+    // top 3 styling zoals bij scoreboard pagina
+    $row = '';
+    if ($positie == 1) $row = 'top-1';
+    elseif ($positie == 2) $row = 'top-2';
+    elseif ($positie == 3) $row = 'top-3';
+    // rest van de rijen
     $html .= '<tr class="' . $rowClass . '">';
     $html .= '<td>'  . $positie . '</td>';
     $html .= '<td>'  . $naam . '</td>';
@@ -154,11 +153,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['download_pdf'])) {
     </body>
     </html>';
 
-    // Genereer PDF
+    // genereer PDF en stuur naar browser
     $dompdf = new Dompdf();
     $dompdf->loadHtml($html);
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    $dompdf->stream('leaderboard.pdf', ['Attachment' => 1]);
+    $dompdf->stream('leaderboard.pdf', ['Attachment' => 1]); // forceer download
+    // afsluiten
     exit();
 }

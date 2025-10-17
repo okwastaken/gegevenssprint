@@ -1,15 +1,14 @@
 <?php
-// Start session EERST
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check of gebruiker ingelogd is
+// check of gebruiker ingelogd is
 if (!isset($_SESSION['gebruikersnaam'])) {
     header('Location: ../php/login.php');
     exit();
 }
-// Check of gebruiker admin is - GEFIXED: correcte logica
+// check of gebruiker admin is
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] != 1) {
     header("Location: ../php/login.php");
     exit();
