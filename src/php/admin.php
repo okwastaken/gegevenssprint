@@ -9,12 +9,14 @@ if (!isset($_SESSION['gebruikersnaam'])) {
     exit();
 }
 // check of gebruiker admin is
-if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] != 1) {
-    header("Location: ../php/login.php");
-    exit();
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] === 0) {
+
+    header('location: ../php/logout.php');
+    exit('Toegang geweigerd.');
 }
 
 $welkom = "Welkom " . htmlspecialchars($_SESSION['gebruikersnaam']) . " op de admin pagina! Hier zie je de gebruikers, hun leeftijd en username!";
+
 
 
 require_once('header.php');
@@ -31,13 +33,13 @@ require_once('header.php');
 </head>
 
 <body>
-   <main class="admin-page container">
+    <main class="admin-page container">
         <h1 class="page-title"><?= $welkom ?></h1>
 
         <div class="animatiekleur">Admin Paneel</div>
 
         <?php
-       //userlist
+        //userlist
         require_once './adminbackend/userlist.php';
 
         // echo button als die bestaat
@@ -45,6 +47,11 @@ require_once('header.php');
             echo $button;
         }
         ?>
+
+        <form method="post" action="./backupdb/backup.php">
+            <button type="submit" class="button button-primary">Download gebruikers .sql</button>
+        </form>
+
     </main>
 </body>
 

@@ -14,6 +14,7 @@ $base = 'gegevenssprint/';
     <title>Document</title>
     <link rel="stylesheet" href="<?= $base ?>../css/header.css">
     <link rel="stylesheet" href="<?= $base ?>../../css/header.css">
+  
 </head>
 
 <body>
@@ -21,6 +22,7 @@ $base = 'gegevenssprint/';
 
         <nav class="navbar">
             <img src="../../resources/add-6622547_1280.png" alt="logo" class="draaiendefoto">
+        
             <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navmenu">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect y="7" width="32" height="4" rx="2" fill="white" />
@@ -46,7 +48,7 @@ $base = 'gegevenssprint/';
         // bevestiging afmelden 
         document.addEventListener('DOMContentLoaded', () => {
             // voor elke link met id weetjehetzeker
-            const confirm= document.querySelectorAll('a#weetjehetzeker');
+            const confirm = document.querySelectorAll('a#weetjehetzeker');
             confirm.forEach(confirm => {
                 confirm.addEventListener('click', function(e) {
                     if (!confirm('Weet je zeker dat je deze actie wilt uitvoeren?')) {

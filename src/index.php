@@ -6,23 +6,28 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Controleer of gebruiker ingelogd is
 if (!isset($_SESSION['gebruikersnaam'])) {
-    header('Location: src/php/login.php');
+    header('Location: php/login.php');
     exit();
 }
-$base = '/periode_1/gegevenssprint';
 
-require_once(__DIR__ . '../php/hoofpaginabackend.php');
-require_once(__DIR__ . '../php/header.php');
+
+include 'php/header.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <?php
+    require_once __DIR__ . '../php/hoofpaginabackend.php';
+    ?>
     <?php echo $welcomeMessage; ?>
     <main class="main-center">
         <div class="centered-spin">
@@ -35,4 +40,5 @@ require_once(__DIR__ . '../php/header.php');
         </div>
     </main>
 </body>
+
 </html>

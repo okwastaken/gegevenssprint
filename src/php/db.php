@@ -12,13 +12,11 @@ $wachtwoord = $_ENV['DB_PASS'];
 $database = $_ENV['DB_NAME'];
 
 try {
-$conn = new mysqli($host, $naam, $wachtwoord, $database);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $conn = new mysqli($host, $naam, $wachtwoord, $database);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 } catch (Exception $e) {
     echo "Connection failed: " . $e->getMessage();
     exit;
 }
-
-?>

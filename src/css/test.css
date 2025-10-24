@@ -1,285 +1,217 @@
-/* Leaderboard styling
-   Paste into a separate .css file or inside a <style> in your HTML.
-   Designed to print nicely with Dompdf (A4) and look good on screen.
-*/
-
-/* --- Color & sizing variables --- */
-:root {
-    --bg: #f6f8fb;
-    --card: #ffffff;
-    --accent: #0b74de;
-    /* primary blue */
-    --accent-2: #00bfa6;
-    /* secondary accent */
-    --muted: #6b7280;
-    --text: #0f172a;
-    --border: #e6e9ef;
-    --shadow: 0 6px 20px rgba(15, 23, 42, .08);
-    --radius: 12px;
-    --max-width: 920px;
-}
-
-/* --- Page layout --- */
 html,
 body {
-    height: 100%;
     margin: 0;
     padding: 0;
-    background: linear-gradient(180deg, var(--bg), #ffffff 60%);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    color: var(--text);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 15px;
-    line-height: 1.4;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #222;
+    background: #fff;
 }
 
-body {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 28px;
-    box-sizing: border-box;
-}
-
-/* Container look (applies to the first level content) */
-body>* {
+.wrapper {
+    padding: 0mm;
     width: 100%;
-    max-width: var(--max-width);
 }
 
-/* Header */
 h1 {
-    margin: 0 0 18px 0;
-    font-size: 28px;
+    margin: 0 0 12px 0;
+    padding: 6px 0;
+    font-size: 20px;
     font-weight: 700;
     text-align: center;
-    letter-spacing: 0.2px;
-    color: var(--text);
-    background: linear-gradient(90deg, rgba(11, 116, 222, 0.08), rgba(0, 191, 166, 0.03));
-    padding: 14px 18px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+    color: #0f172a;
 }
 
-/* Table base */
-table {
+/* Tabel */
+table.leaderboard {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: var(--card);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
+    border-collapse: collapse;
     table-layout: fixed;
     word-wrap: break-word;
+    margin-top: 6px;
 }
 
-/* Header row */
-table thead th,
-table>tr:first-child th,
-table tr:first-child th {
+table.leaderboard thead th {
+    padding: 10px 12px;
     text-align: left;
-    padding: 14px 18px;
     font-weight: 700;
     font-size: 13px;
-    background: linear-gradient(180deg, rgba(11, 116, 222, 0.95), rgba(6, 95, 184, 0.92));
-    color: #fff;
-    letter-spacing: 0.3px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: #2b7ed6;
+    color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-/* Data cells */
-table td {
-    padding: 12px 18px;
-    font-size: 14px;
-    color: var(--text);
-    border-bottom: 1px dashed var(--border);
+table.leaderboard tbody td {
+    padding: 10px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     vertical-align: middle;
+    font-size: 13px;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-/* Make the name column flexible, clicks column compact */
-table td:first-child {
-    width: 70%;
-}
-
-table td:last-child {
-    width: 30%;
+/* clicks kolom */
+table.leaderboard tbody td.clicks {
     text-align: right;
     font-weight: 700;
+    width: 110px;
 }
 
-/* Row striping */
-table tr:nth-child(odd) td {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+/* Zebra */
+table.leaderboard tbody tr:nth-child(even) td {
+    background-color: #fbfdff;
 }
 
-table tr:nth-child(even) td {
-    background: linear-gradient(90deg, rgba(246, 248, 251, 0.6), rgba(246, 248, 251, 0.6));
+/* Huidige gebruiker highlighten */
+tr.current-user td {
+    background-color: #e0f2fe !important; /* Lichtblauw */
+    font-weight: bold;
+    border-left: 4px solid #2b7ed6;
 }
 
-/* Hover (for screen only) */
-@media screen {
-    table tbody tr:hover td {
-        transform: translateY(-1px);
-        transition: all .12s ease;
-        box-shadow: 0 6px 18px rgba(11, 116, 222, 0.04) inset;
-    }
-}
-
-/* Top 3 highlights (header is row 1, so data rows start at 2) */
-table tr:nth-child(2) td:first-child::before {
-    content: "🥇 ";
-    font-size: 14px;
-}
-
-table tr:nth-child(3) td:first-child::before {
-    content: "🥈 ";
-    font-size: 14px;
-}
-
-table tr:nth-child(4) td:first-child::before {
-    content: "🥉 ";
-    font-size: 14px;
-}
-
-table tr:nth-child(2) td {
-    background: linear-gradient(90deg, rgba(255, 249, 240, 0.9), rgba(255, 255, 255, 0.6));
-}
-
-table tr:nth-child(3) td {
-    background: linear-gradient(90deg, rgba(244, 249, 255, 0.95), rgba(255, 255, 255, 0.6));
-}
-
-table tr:nth-child(4) td {
-    background: linear-gradient(90deg, rgba(249, 245, 255, 0.95), rgba(255, 255, 255, 0.6));
-}
-
-/* Subtle separators for print clarity */
-table td+td {
-    border-left: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-/* Responsive: stack on very small widths */
-@media (max-width:520px) {
-    h1 {
-        font-size: 20px;
-        padding: 10px;
-    }
-
-    table {
-        font-size: 13px;
-    }
-
-    table td {
-        display: block;
-        width: 100%;
-        text-align: left;
-        border-bottom: 1px solid var(--border);
-    }
-
-    table thead {
-        display: none;
-    }
-
-    /* hide header on tiny screens; rows become cards */
-    table tr {
-        margin-bottom: 10px;
-        display: block;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-    }
-
-    table td {
-        padding: 10px;
-        white-space: normal;
-    }
-
-    table td:first-child::before {
-        display: inline-block;
-        margin-right: 6px;
-    }
-
-    table td:last-child {
-        text-align: left;
-        font-weight: 700;
-    }
-}
-
-/* --- Print / PDF friendly rules for Dompdf --- */
-@page {
-    margin: 18mm 15mm;
-    /* Dompdf supports @page */
-    size: A4 portrait;
-}
-
+/* Print-vriendelijke regels */
 @media print {
-
-    html,
-    body {
-        background: #fff;
-    }
-
-    body {
-        padding: 0;
-    }
-
     h1 {
-        box-shadow: none;
-        background: none;
-        text-align: left;
-        padding: 6px 0;
         font-size: 18px;
+        text-align: left;
+        padding: 4px 0;
     }
 
-    table {
-        box-shadow: none;
-        border-radius: 0;
-        border: 1px solid var(--border);
-    }
-
-    table td {
+    table.leaderboard thead th,
+    table.leaderboard tbody td {
         padding: 8px;
         font-size: 12px;
-        border-bottom: 1px solid var(--border);
     }
 
-    /* Try to avoid breaking a row across pages */
     tr,
     td,
     th {
         page-break-inside: avoid;
     }
+}
 
-    /* Remove hover effects */
-    table tbody tr:hover td {
-        transform: none;
-        box-shadow: none;
+/* Kleine weergave voor smalle schermen */
+@media screen and (max-width: 520px) {
+    table.leaderboard thead {
+        display: none;
     }
 
-    /* Ensure medals are printed as text (unicode) */
+    table.leaderboard,
+    table.leaderboard tbody,
+    table.leaderboard tr,
+    table.leaderboard td {
+        display: block;
+        width: 100%;
+    }
 
+    table.leaderboard tr {
+        margin-bottom: 10px;
+    }
+
+    table.leaderboard td {
+        white-space: normal;
+    }
+
+    table.leaderboard td.clicks {
+        text-align: left;
+    }
 }
 
-/* Accessibility tweaks */
-table th,
-table td {
-    outline: none;
+/* Container styling */
+.account-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-table th {
-    font-size: 13px;
+/* Knoppen container - flexbox voor naast elkaar */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
 }
 
-/* Small helper class if you want a centered caption or notes */
-.leaderboard-note {
-    display: block;
-    text-align: center;
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 13px;
+/* Formulier styling */
+.account-container form {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Algemene knop styling voor consistentie */
+.account-container button,
+.pdf-container button,
+.xlsx-container button {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-height: 48px; /* uniforme hoogte */
+    box-sizing: border-box;
+}
+
+/* Hover en active effecten voor alle knoppen */
+.account-container button:hover,
+.pdf-container button:hover,
+.xlsx-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.account-container button:active,
+.pdf-container button:active,
+.xlsx-container button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Knopkleuren */
+/* Standaard blauw (Toon scoreboard) */
+.button-group form:first-child button {
+    background-color: #2b7ed6;
+    color: #fff;
+}
+
+.button-group form:first-child button:hover {
+    background-color: #1e5bb8;
+}
+
+/* PDF-knop kleur (rood) */
+.pdf-container button {
+    background-color: #DC2626;
+    color: white;
+}
+
+.pdf-container button:hover {
+    background-color: #B91C1C;
+}
+
+/* Excel-knop kleur (groen) */
+.xlsx-container button {
+    background-color: #059669;
+    color: white;
+}
+
+.xlsx-container button:hover {
+    background-color: #047857;
+}
+
+/* Responsive voor knoppen op kleine schermen */
+@media screen and (max-width: 520px) {
+    .button-group {
+        flex-direction: column;
+    }
+
+    .account-container button,
+    .pdf-container button,
+    .xlsx-container button {
+        padding: 14px 20px;
+        font-size: 15px;
+    }
 }

@@ -25,6 +25,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <?php
+    //foutmeldingen weergeven
     if (isset($_GET['error']) && $_GET['error'] === 'username_taken') {
       echo '<div class="alert error" role="alert">Deze gebruikersnaam is al in gebruik.</div>';
     }

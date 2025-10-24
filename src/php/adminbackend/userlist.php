@@ -10,15 +10,15 @@ if (!isset($_SESSION['is_admin']) === 1) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $stmt = $conn->prepare("SELECT * FROM gebruikers");
-// Haal alle gebruikers op
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            echo '<div class="table-container">';
-            echo "<table>";
-            echo "  <thead>
+    try {
+        $stmt = $conn->prepare("SELECT * FROM gebruikers");
+        // haal alle gebruikers op
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                echo '<div class="table-container">';
+                echo "<table>";
+                echo "  <thead>
                 <tr>
                     <th>ID</th>
                     <th>Naam</th>
@@ -29,28 +29,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </thead>
             <tbody>";
 
-            while ($row = $result->fetch_assoc()) {
-                $is_admin = ($row['is_admin'] == 1) ? "Ja" : "Nee";
+                while ($row = $result->fetch_assoc()) {
+                    $is_admin = ($row['is_admin'] == 1) ? "Ja" : "Nee";
 
-                echo "<tr>
+                    echo "<tr>
                     <td data-label='ID'>" . htmlspecialchars($row['id']) . "</td>
                     <td data-label='Naam'>" . htmlspecialchars($row['naam']) . "</td>
                     <td data-label='Leeftijd'>" . htmlspecialchars($row['leeftijd']) . "</td>
                     <td data-label='Clicks'>" . htmlspecialchars($row['clicks']) . "</td>
                     <td data-label='Admin'>" . $is_admin . "</td>
                 </tr>";
+                }
+
+                echo "</tbody></table>";
+                echo "</div>";
+            } else {
+                echo "Geen gebruikers gevonden.";
             }
-
-            echo "</tbody></table>";
-            echo "</div>";
         } else {
-            echo "Geen gebruikers gevonden.";
+            echo "Error: " . $stmt->error;
         }
-    } else {
-        echo "Error: " . $stmt->error;
+    } catch (Exception $e) {
+        echo "Fout bij het ophalen van gebruikers: " . $e->getMessage();
+    } finally {
+        $stmt->close();
     }
-}
-
-$button = '<form action="" method="post">
+} else {
+    // toon de knop om gebruikers op te halen zodra er nog geen POST is gedaan verbergen na klikken op de knop
+    $button = '<form action="" method="post">
 <button type="submit">Toon gebruikers</button>
 </form>';
+}
