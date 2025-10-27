@@ -17,7 +17,7 @@ require_once('header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scoreboard</title>
 
-    <link rel="stylesheet" href="../css/scores.css">
+    <link rel="stylesheet" href="../css/test.css">
 
 </head>
 

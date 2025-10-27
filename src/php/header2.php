@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 //had problemen met directory en heb het hierbij ge hardforceert
- $base = 'gegevenssprint/';
+$base = 'gegevenssprint/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <header>
 
         <nav class="navbar">
-            <img src="../../resources/add-6622547_1280.png" alt="logo" class="draaiendefoto">
+            <img src="../resources/add-6622547_1280.png" alt="logo" class="draaiendefoto">
         
             <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navmenu">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -33,5 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     } catch (Exception $e) {
         echo "Fout bij het verwerken van de registratie: " . $e->getMessage();
+        header('location: ../registerform.php');
     }
 }

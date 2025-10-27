@@ -11,7 +11,7 @@ if (!isset($_SESSION['gebruikersnaam'])) {
 }
 
 
-include 'php/header.php';
+include 'php/header2.php';
 
 ?>
 <!DOCTYPE html>
