@@ -31,7 +31,7 @@ cp .env.example .env
    - Ga naar: http://localhost/phpmyadmin
    - Klik op **Nieuwe database**  
    - Geef een naam, bijvoorbeeld `example_db`
-    of importeer backup bestand
+    of importeer backup bestand die in backup folder staat
    ![kolommen](image.png)
 
 3. **Pas de databasegegevens aan in je `.env`-bestand**  
