@@ -17,12 +17,12 @@ Dit project maakt gebruik van **Composer**
 2. cmd 
 Installeer dependencies met Composer
 Open CMD of Terminal in de projectmap en voer uit:
-
-composer install
+ ```
+composer install 
 
 3. Maak een .env-bestand aan
 Kopieer het voorbeeldbestand: 
-
+```
 cp .env.example .env
 
 # Database
@@ -31,14 +31,8 @@ cp .env.example .env
    - Ga naar: http://localhost/phpmyadmin
    - Klik op **Nieuwe database**  
    - Geef een naam, bijvoorbeeld `example_db`
-
-2. **Importeer de database **  
-   - Ga naar het tabblad **Importeren** in phpMyAdmin  
-   - Kies het bestand, bijvoorbeeld:  
-     ```
-     database/example_db.sql
-     ```  
-   - Klik op **Start** om te importeren
+   - geef een tabel met gebruikers daar zet je dit in
+   ![kolommen](image.png)
 
 3. **Pas de databasegegevens aan in je `.env`-bestand**  
    ```dotenv
