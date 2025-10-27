@@ -72,7 +72,7 @@ UNLOCK TABLES;
 
 
    ![kolommen](image.png)
-
+#dotenv
 3. **Pas de databasegegevens aan in je `.env`-bestand**  
    ```dotenv
     vul dit in met je mamp wachtwoord en gebruikersnaam host en db naam
